@@ -5,7 +5,7 @@ Development of a web and desktop application (guide):
    - Design the user interface for both the web and desktop versions using Figma.
 
 2. **Development of the Web Version:**
-   - We will adopt a frontend (HTML, CSS, JS with React) and backend (Django Framework) development approach. The frontend handles the user interface, while the backend manages the logic and data handling.
+   - We will adopt a frontend (HTML, CSS, JS with React, Firebase database for the chat section) and backend (Django Framework) development approach. The frontend handles the user interface, while the backend manages the logic and data handling.
    - We will also use a web development framework or library, using React to complete the user interface and create the web application.
 
 3. **Development of the Desktop Version:**
@@ -35,7 +35,7 @@ Development of a web and desktop application (guide):
 - **Frontend Development:**
   - Design User Interface with Figma.
   - Use standard web technologies like HTML, CSS, and JavaScript.
-  - Apply web development frameworks or libraries like React or Angular to complete the user interface.
+  - Apply web development frameworks or libraries like React or Angular to complete the user interface and also use Firebase Database for the chat section.
     - React is very flexible.
     - Angular is more comprehensive.
 
