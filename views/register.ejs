@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="/public/css/register_style.css">
+    <script src="https://kit.fontawesome.com/b5c57f8a6b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+    </header>
+    <div id="raid">
+        <i class="fa-solid fa-user" id="iconousuario"></i>
+        <div class="container">
+            <form action="register" method="POST" id="register" onsubmit="return validatePassword()">
+                <div class="input-container">
+                    <input type="text" id="email" name="email" placeholder="E-mail" required>
+                    <input type="text" id="user" name="user" placeholder="Username" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat Password" required>
+                    <span id="passwordError" class="error"></span><br>
+                    <input type="submit" id="enviar" value="Register">
+                </div>
+            </form>
+            <script>
+                function validatePassword() {
+                    var password = document.getElementById("password").value;
+                    var confirmPassword = document.getElementById("confirmPassword").value;
+                    var passwordError = document.getElementById("passwordError");
+
+                    if (password !== confirmPassword) {
+                        passwordError.innerHTML = "Las contraseñas no coinciden.";
+                        return false;
+                    } else {
+                        passwordError.innerHTML = "";
+                        return true;
+                    }
+                }
+            </script>
+        </div>
+    </div>
+    <script src="/public/scripts/login-teamplate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage%>',
+                icon: '<%= alertIcon%>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/login<%= ruta %>'
+            });
+        </script>
+    <% } %>
+</body>
+</html>
