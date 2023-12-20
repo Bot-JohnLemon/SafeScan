@@ -1,8 +1,9 @@
 const express = require('express');
 const session = require('express-session');
-const multer = require('multer')
+const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { exec } = require('child_process');
 const app = express();
 const port = 3000;
 
@@ -158,6 +159,16 @@ const storage = multer.diskStorage({
         const originalFileName = file.originalname;
         cb(null, `${username}_${originalFileName}`);
         console.log(`New file saved [${username}_${originalFileName}] ---> [user:${username}]`);
+
+        const pythonScriptPath = 'safescan_analyzer.py';
+        exec(`python3 ${pythonScriptPath}`, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error executing Python script: ${error}`);
+                return;
+            }
+            console.log(`Python script output: ${stdout}`);
+        });
+    
     }
 });
 
