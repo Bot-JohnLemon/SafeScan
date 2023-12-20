@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/b5c57f8a6b.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeScan Upload</title>
+    <link rel="stylesheet" href="/public/css/main_template_css.css">
+    <link rel="stylesheet" href="/public/css/upload_style.css">
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <% if (login == true) { %>
+            <div class="adondetanmuchacho">
+                <div class="file-name" id="file-name-display"></div>
+                <form action="/files" method="post" enctype="multipart/form-data">
+                    <div id="div_file">
+                        <p id="texto">Add File</p>
+                        <input type="file" id="archivo" name="file_to_upload" multiple>
+                    </div>
+                    <input type="submit" value="upload" class="upload">
+                </form>
+            </div>
+        <% } %>
+    </main>
+    <footer>
+        <table><tr>
+            <td><p>&copy;SafeScan. All rights reserved</p></td>
+            <td class="github"><a href="#"><i class="fa-brands fa-github"></i>  GitHub</a></td>
+        </tr></table>
+    </footer>
+    <script id="login-data" data-login="<%= login %>"></script>
+    <script src="/public/scripts/script_upload_template.js"></script>
+    <script>
+        const fileInput = document.getElementById('archivo');
+        const fileNameDisplay = document.getElementById('file-name-display');
+    
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                fileNameDisplay.style.display = 'block';
+                fileNameDisplay.innerHTML = '<p>Archivos seleccionados:</p><ul>';
+
+                for (let i = 0; i < this.files.length; i++) {
+                    fileNameDisplay.innerHTML += `<li>${this.files[i].name}</li>`;
+                }
+
+                fileNameDisplay.innerHTML += '</ul>';
+            } else {
+                fileNameDisplay.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage%>',
+                icon: '<%= alertIcon%>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/upload<%= ruta %>'
+            });
+        </script>
+    <% } %>
+</body>
+</html>
