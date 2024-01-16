@@ -19,6 +19,8 @@ cd ~/
 
 git clone https://github.com/Bot-JohnLemon/SafeScan.git
 
+cd SafeScan
+
 ```
 
 <br>
