@@ -31,9 +31,7 @@ git clone https://github.com/Bot-JohnLemon/SafeScan.git
 
 For the Installation of the sockets you will need to run the bash script called `INSTALL.sh`, but for this you need root permisions.
 
- ` sudo apt install mysql-server `
-
-```sh
+ ```sh
 
 sudo su
 
