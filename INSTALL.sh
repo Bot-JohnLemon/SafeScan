@@ -64,7 +64,7 @@ print_message "Instalando phpMyAdmin..."
 install_package "phpmyadmin"
 
 systemctl restart apache2
-systemctl restart mysql-server
+systemctl restart mysql
 systemctl restart npm
 systemctl restart phpmyadmin
 
